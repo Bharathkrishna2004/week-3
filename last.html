@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Bharath Krishna Mangadath - Portfolio</title>
+    <style>
+        body {
+            background-color: rgb(168, 248, 168);
+            color: black;
+        }
+
+        .arrow {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrow span {
+            font-size: 24px;
+            margin-left: 10px;
+        }
+
+        img {
+            max-width: 20%;
+            height: auto;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        .project,
+        #contact {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><router-link to="/">Home</router-link></li>
+                <li><router-link to="/projects">Projects</router-link></li>
+                <li><router-link to="/contact">Contact</router-link></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <router-view></router-view>
+    </main>
+    <footer>
+        <p>&copy; 2023 Bharath Krishna</p>
+    </footer>
+
+    <section id="home">
+        <img src="mypic.jpg" alt="Your Name">
+        <h1>Welcome to Portfolio of Bharath Krishna</h1>
+        <p>Student at Deakin University</p>
+    </section>
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project">
+            <h3>HTML Website 1</h3>
+            <p>A simple HTML website showcasing my skills in HTML and CSS.</p>
+            <a href="Task1.1.html" download>View Website</a>
+        </div>
+        <div class="project">
+            <h3>HTML Website 2</h3>
+            <p>Another HTML website with a different design and layout.</p>
+            <a href="Sample.html" download>View Website</a>
+        </div>
+        <div class="project">
+            <h3>Java Sample Code</h3>
+            <p>A Java sample code project demonstrating my programming skills.</p>
+            <a href="Javasample.html" download>Download Code</a>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="contact.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.0.11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@4.0.0-beta.14"></script>
+    <script>
+        const Home = { template: '#home' }
+        const Projects = { template: '#projects' }
+        const Contact = { template: '#contact' }
+
+        const router = VueRouter.createRouter({
+            history: VueRouter.createWebHistory(),
+            routes: [
+                { path: '/', component: Home },
+                { path: '/projects', component: Projects },
+                { path: '/contact', component: Contact },
+            ],
+        })
+
+        const app = Vue.createApp({})
+        app.use(router)
+        app.mount('main')
+    </script>
+</body>
+
+</html>
